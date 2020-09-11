@@ -20,7 +20,7 @@ class Voiture {
        $this->marque = $marque2;
   }
   public function setImmatriculation($immatriculation2) {
-    if(strlen(stribg $immatriculation2)==8){
+    if(strlen($immatriculation2)==8){
       $this->immatriculation = $immatriculation2;
     }
     echo "il n'y pas 8 caractères";
