@@ -13,11 +13,14 @@
 		  require_once 'Conf.php';
 
 		  
-		  echo Conf::getLogin();
+		  /*echo Conf::getLogin();
 		  echo Conf::getHostname();
 		  echo Conf::getDatabase();
-		  echo Conf::getPassword();
+		  echo Conf::getPassword();*/
+		  require_once "Model.php";
+		  echo "Connexion réussie !" ;
 		?>
+
 
     </body>
 </html> 
