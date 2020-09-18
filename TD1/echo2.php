@@ -5,16 +5,14 @@
         <title> Mon premier php </title>
     </head>
    
-    <body>
-        
+    <body>       
         <?php
-        /*$voitures = array (
+        $voitures = array (
           'marque' => 'McLaren',
           'couleur'    => 'noire'  ,
-          'immatriculation'    => '5489DZ34'  );*/
-        $voitures = array();
-          //var_dump($voitures);
-          
+          'immatriculation'    => '5489DZ34'  );
+        //$voitures = array();
+          //var_dump($voitures);          
           //echo "Voiture {$voitures['immatriculation']} de marque {$voitures['marque']} (couleur {$voitures['couleur']})";
           echo "<p><h1>Liste des voitures</h1>";
           if (empty($voitures)) {
@@ -26,23 +24,7 @@
 
             echo "<li>$key : $value</li>";
           }
-
-
-
-
-
-
-
-        //echo "<p>Voiture $immatriculation de marque $marque (couleur $couleur)</p>";
-         
-
-
-
-
-
-
-
-
+        //Necho "<p>Voiture $immatriculation de marque $marque (couleur $couleur)</p>";    
         ?>
     </body>
 </html> 
