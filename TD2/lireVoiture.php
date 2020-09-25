@@ -9,9 +9,11 @@
         
 		<?php
 		require "Model.php";
+		require "Voiture.php";
 		$rep = (Model::$pdo)->query("SELECT * FROM `voiture` WHERE 1");
 		$tab_obj = $rep->fetchAll(PDO::FETCH_OBJ);
-
+		$rep->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
+		$tab_voit = $rep->fetchAll();
 		//var_dump($tab_obj);
 		foreach ($tab_obj as $obj){
 			foreach ($obj as $attribut) {
