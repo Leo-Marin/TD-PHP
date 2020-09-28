@@ -17,14 +17,7 @@ class Voiture {
        $this->marque = $marque2;
   }
       
-  /*
-  // un constructeur
-  public function __construct($m, $c, $i)  {
-   $this->marque = $m;
-   $this->couleur = $c;
-   $this->immatriculation = $i;
-  } 
-  */
+
 
   public function __construct($m = NULL, $c = NULL, $i = NULL) {
   if (!is_null($m) && !is_null($c) && !is_null($i)) {
@@ -68,7 +61,7 @@ class Voiture {
   }
 
   public static function getAllVoitures(){
-    $rep = (Model::$pdo)->query("Select * From Voiture");
+    $rep = (Model::$pdo)->query("Select * From voiture");
     $rep->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
     $tab_voit = $rep->fetchAll();
     return $tab_voit;
