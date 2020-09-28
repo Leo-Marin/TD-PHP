@@ -24,11 +24,13 @@ foreach ($tab_voit as $value) {
 	echo $value->afficher();
 	echo "</br>";
 }
-*/
+
 foreach (Voiture::getAllVoitures() as $value) {
 	echo ($value->afficher());
 	echo "<br>";
-}
+}*/
+$v1 = new Voiture("simca", "vert", "19PUTO19");
+$v1->save();
 
 
 

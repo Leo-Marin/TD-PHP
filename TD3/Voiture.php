@@ -66,7 +66,7 @@ class Voiture {
     $tab_voit = $rep->fetchAll();
     return $tab_voit;
   }
- function getVoitureByImmat($immat) {
+ public static function getVoitureByImmat($immat) {
     $sql = "SELECT * from voiture WHERE immatriculation=:nom_tag";
     // Préparation de la requête
     $req_prep = Model::$pdo->prepare($sql);
@@ -86,7 +86,14 @@ class Voiture {
         return false;
     return $tab_voit[0];
  }
+ public function save(){
+     $marque = $this->marque;
+     $immatriculation = $this->immatriculation;
+     $couleur = $this->couleur;
+     (Model::$pdo)->query("INSERT INTO voiture (immatriculation, couleur, marque  ) VALUES ('$immatriculation', '$couleur', '$marque')");
 
+
+ }
 }
 ?>
 
