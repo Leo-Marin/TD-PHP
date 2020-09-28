@@ -1,31 +1,43 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title> test conf </title>
-    </head>
-   
-    <body>
-        
-		<?php
-		require "Model.php";
-		require "Voiture.php";
-		$rep = (Model::$pdo)->query("SELECT * FROM `voiture` WHERE 1");
-		$tab_obj = $rep->fetchAll(PDO::FETCH_OBJ);
-		$rep->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
-		$tab_voit = $rep->fetchAll();
-		//var_dump($tab_obj);
-		foreach ($tab_obj as $obj){
-			foreach ($obj as $attribut) {
-				echo "$attribut\n";
-			}
-
-		}
+<?php
+require_once 'Model.php';
+require_once 'Voiture.php';
 
 
-		?>
+Model::Init();
+
+/*
+$rep = (Model::$pdo)->query("Select * From Voiture");
+
+
+$tab_obj = $rep->fetchAll(PDO::FETCH_OBJ);
+foreach($tab_obj as $value){
+    print_r($value);
+    echo "</br>";
+}
 
 
 
-    </body>
-</html> 
+$rep->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
+$tab_voit = $rep->fetchAll();
+
+foreach ($tab_voit as $value) {
+	echo $value->afficher();
+	echo "</br>";
+}
+*/
+foreach (Voiture::getAllVoitures() as $value) {
+	echo ($value->afficher());
+	echo "<br>";
+}
+
+
+
+
+
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+?>
