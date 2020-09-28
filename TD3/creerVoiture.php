@@ -10,7 +10,7 @@
         <?php
         require_once('Voiture.php'); 
 	    $voiture1 = new Voiture($_POST['Marque'],$_POST['Couleur'],$_POST['immatriculation']);
-	    $voiture1->afficher();
+	    $voiture1->save();
         ?>
     </body>
 </html> 
