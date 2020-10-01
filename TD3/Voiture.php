@@ -87,10 +87,18 @@ class Voiture {
     return $tab_voit[0];
  }
  public function save(){
-     $marque = $this->marque;
-     $immatriculation = $this->immatriculation;
-     $couleur = $this->couleur;
+     try{
+        $marque = $this->marque;
+        $immatriculation = $this->immatriculation;
+        $couleur = $this->couleur;
      (Model::$pdo)->query("INSERT INTO voiture (immatriculation, couleur, marque  ) VALUES ('$immatriculation', '$couleur', '$marque')");
+         
+     }catch (PDOException $e) {
+            if (Conf::getDebug()) {
+            echo $e->getMessage(); // affiche un message d'erreur
+            }
+     }
+     
 
 
  }
