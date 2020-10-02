@@ -39,6 +39,7 @@ class Trajet {
             $this->conducteur_login = $data["conducteur_login"];
         }
     }
+
     // une methode d'affichage.
     public function afficher() {
         echo "Ce trajet du {$this->date} partira de {$this->depart} pour aller à {$this->arrivee}.";
@@ -60,4 +61,35 @@ class Trajet {
             die();
         }
     }
+
+    public static function findPassagers($id) {
+        try {
+            $sql = "SELECT * FROM utilisateur 
+                JOIN passager ON passager.utilisateur_login=utilisateur.login 
+                JOIN trajet ON trajet.id=passager.trajet_id 
+                JOIN utilisateur U ON U.login=trajet.conducteur_login 
+                WHERE trajet.id=:id";
+            // Préparation de la requête
+            $req_prep = Model::$pdo->prepare($sql);
+            $values = array(
+                "id_tag" => $id
+            );
+            $req_prep->execute($values);
+        } catch (PDOException $e) {
+            if (Conf::getDebug()) {
+                echo $e->getMessage(); // affiche un message d'erreur
+            } else {
+                echo 'Une erreur est survenue <a href=""> retour a la page d\'accueil </a>';
+            }
+            die();
+        $req_prep->setFetchMode(PDO::FETCH_CLASS, 'Voiture');
+        $tab_users = $req_prep->fetchAll();
+        return $tab_users;
+        // Attention, si il n'y a pas de résultats, on renvoie false
+        /*if (empty($tab_voit))
+            return false;
+        return $tab_voit[0];    */        
+        }
+    }
+
 }
