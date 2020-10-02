@@ -91,17 +91,27 @@ class Voiture {
         $marque = $this->marque;
         $immatriculation = $this->immatriculation;
         $couleur = $this->couleur;
-     (Model::$pdo)->query("INSERT INTO voiture (immatriculation, couleur, marque  ) VALUES ('$immatriculation', '$couleur', '$marque')");
-         
+        
+    $sql = "INSERT INTO voiture (immatriculation, couleur, marque  ) VALUES ( :imm, :coul, :mar)";
+    // Préparation de la requête
+    $req_prep = Model::$pdo->prepare($sql);
+    $values = array(
+        "imm" => $immatriculation,
+        "coul" => $couleur,
+        "mar"=> $marque,
+    );
+    $req_prep->execute($values);            
      }catch (PDOException $e) {
             if (Conf::getDebug()) {
             echo $e->getMessage(); // affiche un message d'erreur
             }
+            else {
+            echo 'Une erreur est survenue <a href=""> retour a la page d\'accueil </a>';
+            }
+            die();
+        }
      }
-     
-
-
  }
-}
+
 ?>
 
