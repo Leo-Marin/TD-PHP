@@ -19,6 +19,18 @@ class ControllerVoiture {
         }
     }
 
+    public static function create() {
+        
+        require ('../view/voiture/create.php');
+    }
+    public static function created(){
+        $immat = $_GET['immatriculation'];
+        $marque = $_GET['marque'];
+        $couleur = $_GET['couleur'];
+        $voiture1  = new ModelVoiture($marque,$couleur,$immat);
+        $voiture1->save();
+        ControllerVoiture::readAll();
+    }
 }
 
 ?>
