@@ -9,7 +9,7 @@ $_SESSION1['isAdmin'] = "1";
 $_SESSION2['login'] = 'lele';
 $_SESSION2['isAdmin'] = "0";
 $_SESSION2['note'] = [9,14,12,16,11,7];
-$_SESSION2['LAST_ACTIVITY'] = time;
+$_SESSION2['LAST_ACTIVITY'] = time();
 unset($_SESSION1['login']);
 
 
